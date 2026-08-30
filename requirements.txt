@@ -1,0 +1,31 @@
+# 台北捷運人流預測專案 — 依賴套件（Python 3.10+）
+# 一次安裝：pip install -r requirements.txt
+# CPU版PyTorch較小：pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# 資料工程與分析（Stage 0-2c, 4）
+duckdb>=1.0
+pandas>=2.0
+numpy>=1.26
+pyarrow>=15.0          # pandas 讀取 parquet 的後端
+matplotlib>=3.8
+networkx>=3.0          # stage2_eda 計算 PageRank
+
+# 統計基準線（Stage 5）
+statsmodels>=0.14
+tqdm
+
+# 機器學習（Stage 6）
+scikit-learn>=1.4
+lightgbm>=4.0
+
+# 深度學習（Stage 7）
+torch>=2.0
+
+# 可解釋性（Stage 8）
+shap>=0.45
+
+# 本專案結果的驗證環境（2026-08，Linux + Python 3.11）：
+#   duckdb 1.5.5 / pandas 3.0.2 / numpy 2.4.4 / pyarrow 22.0.0 / matplotlib 3.10.9
+#   networkx 3.6.1 / statsmodels 0.15.0 / scikit-learn 1.8.0 / lightgbm 4.7.0 / shap 0.51.0
+# 於此環境重跑 stage2_eda 與 stage8，SHAP 佔比與事件 hold-out 結果與報告完全一致
+# （SHAP share_pct 最大差 0.0000pp），可見數值結果對套件版本相當穩健。

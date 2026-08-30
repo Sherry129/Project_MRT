@@ -1,0 +1,39 @@
+# ============================================================
+# 注意：.gitignore 不支援行末註解，每條規則必須獨佔一行
+# ============================================================
+
+# ---- 大檔不入版控（可由 scripts/ 重現，見 README 重現步驟）----
+# data/parquet/  41個月OD原始資料（207MB），stage1b 可重新下載
+data/parquet/
+*.parquet
+
+# data/features/feature_table.csv  建模特徵表（24MB），stage4 可重新產出
+data/features/feature_table.csv
+
+# data/raw/  stage1 的原始CSV暫存區（12.4GB）
+data/raw/
+
+# 保留入 repo：
+#   data/agg/                        EDA 聚合小表
+#   data/features/calendar_daily.csv、station_static.csv
+#   reports/                         全部（含 figures 與各 stage 的 metrics/predictions csv）
+
+# ---- 執行過程產生的暫存檔 ----
+# .tmp/  DuckDB spill 檔，單次執行可達 1.6GB
+.tmp/
+*.tmp
+__pycache__/
+*.pyc
+.Rhistory
+.ipynb_checkpoints/
+Thumbs.db
+desktop.ini
+
+# ---- 本機工具與環境 ----
+.claude/
+venv/
+.venv/
+.env
+
+# ---- 待刪除暫存區（確認後可整個移除）----
+_to_delete/
